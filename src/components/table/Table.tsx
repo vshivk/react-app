@@ -31,9 +31,15 @@ const Table: FC = () => {
         dispatch(dataSlice.actions.dataChanging(sortedData));
     }
 
+    const loadData = () => {
+        if (!items.length) {
+            dispatch(fetchData());
+        }
+    }
+
     return (
         <>
-            <button onClick={() => dispatch(fetchData())}>Load data</button>
+            <button onClick={() => loadData()}>Load data</button>
             <button onClick={() => dispatch(dataSlice.actions.dataChanging([]))}>Clear data</button>
             {isLoading && !error && !items.length && <p>Loading...</p>}
             {items.length > 0 && (

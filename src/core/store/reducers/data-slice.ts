@@ -16,7 +16,7 @@ export const dataSlice = createSlice({
         },
         dataFetchingSuccess(state, action: PayloadAction<Item[]>) {
             state.error = '';
-            state.items = [...action.payload];
+            state.items = [...state.items,...action.payload];
             state.isLoading = false;
         },
         dataFetchingError(state, action: PayloadAction<string>) {
